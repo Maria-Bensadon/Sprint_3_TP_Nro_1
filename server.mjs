@@ -4,7 +4,8 @@
  * Paso 9 = Configuración del Servidor
    __________________________________________________________________
  
- * 
+ * Centraliza la conexion a MongoDB y a las rutas necesarias
+
 */
 
 import express from 'express'; 
@@ -17,6 +18,10 @@ import superHeroRoutes from './routes/superHeroRoutes.mjs';
 const server = express(); 
 
 // ???? -------------------------------------
+/**
+  process.env.PORT: variable de entorno
+  || 3000`: valor por defecto (fallback)
+ */
 const PORT = process.env.PORT || 3000; 
 // -------------------------------------------
 
@@ -24,7 +29,15 @@ const PORT = process.env.PORT || 3000;
 server.use(express.json()); 
 
 // configuracion de rutas
-server.use('./api', superHeroRoutes); 
+/** 
+  Se define el prefijo "/api". Por lo que todas las rutas
+  llevaran este prefijo. por ejemplo: 
+  - http://localhost:3000/api/heroes/:id
+*/
+server.use('/api', superHeroRoutes); 
+
+// conexion a MongoDB
+connectDB(); 
 
 // Manejo de errores para rutas no encontradas
 server.use((req, res) => {

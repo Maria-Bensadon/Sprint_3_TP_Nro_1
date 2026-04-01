@@ -1,4 +1,34 @@
 
+
+/** 
+ * Paso 5 = Controlador
+   _______________________________________________________
+
+ * Gestiona las solicitudes HTTP. 
+
+ * Se comunica con el servicio, para revisar la lógica de negocio
+  Por ejemplo: si en el servidor, el cliente ingresa un id para 
+  buscar un superheroe, el servicio es el intermediario entre el 
+  controlador y el repositorio (y el modelo)
+ 
+ * La ruta envía el/los dato/s (id, atributo y/o valor, todos los superheroes, 
+  los mayores de 30 años) al controlador. 
+  El controlador utiliza las funciones importadas del servicio, para 
+  comunicarse con el repositorio y obtener la informacion. 
+  - Si todo sale bien (codigo 200 OK), se utilizan las funciones de la vista para
+  "formatear" o mostrar el/los superheroe/s. 
+  - Si sale mal: 
+       - error (codigo 404) => no se encontro el superheroe o los superheroes
+       - error (codigo 500) => hay un problema que no esta especificado, y puede 
+      venir del codigo, de la DB, o de la configuracion
+
+  * El try ... catch es un bloque de instrucciones a intentar (try), que 
+   tiene especificado una respuesta si se produce una excepcion (catch). 
+      - try => codigo 200 y codigo 404
+      - catch => codigo 500
+
+*/
+
 import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes, obtenerSupeheroesMayoresDe30, buscarSuperheroePorAtributo } from "../services/superheroesService.mjs";
 
 // la vista se realiza en el paso 6
@@ -131,21 +161,9 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res) {
 
   catch (error) {
 
-    res.status(500).send({ mensaje: `Error al obtener superhéroes mayores de 30`, error: error.message });
+    res.status(500).send({ mensaje: `Error al obtener superhéroes mayores de 30, controlador`, error: error.message });
 
   }
 }
 
 
-// _____________________________________________________________________
-
-
-/**
-    _________________________________________________
-
-    SPRINT 3 -  Trabajo Práctico N°1
-    _________________________________________________
-
-
-
- */

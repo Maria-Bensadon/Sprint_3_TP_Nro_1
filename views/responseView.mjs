@@ -12,6 +12,7 @@ export function renderizarSuperheroe(superheroe) {
 
     return {
 
+        // estructura de la vista
         Nombre: superheroe.nombreSuperhero,
         "Nombre Real": superheroe.nombreReal,
         Edad: superheroe.edad,

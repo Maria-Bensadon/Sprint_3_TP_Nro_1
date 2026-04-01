@@ -16,33 +16,18 @@ const router = express.Router();
 /** 
  * Endpoints
 */
-//router.get('/heroes', obtenerTodosLosSuperheroesController());
+// http://localhost:3000/api/heroes
+router.get('/heroes', obtenerTodosLosSuperheroesController);
 
-router.get('/heroes/:id', obtenerSuperheroePorIdController());
-
-router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
-
+// http://localhost:3000/api/heroes/mayores-30
 router.get('/heroes/mayores-30', obtenerSuperheroesMayoresDe30Controller);
 
+// http://localhost:3000/api/heroes/:id
+router.get('/heroes/:id', obtenerSuperheroePorIdController);
 
+// http://localhost:3000/api/heroes/buscar/:atributo/:valor
+router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
 
-// _____________________________________________________________________
-
-
-/**
-    _________________________________________________
-
-    SPRINT 3 -  Trabajo Práctico N°1
-    _________________________________________________
-
-
-
- */
-
-    // ENDPOINT N°1 : devuelve todos los superheroes
-    router.get('/heroes', obtenerTodosLosSuperheroesController());
-
-    router.post('/heroes', )
 
 export default router;
 

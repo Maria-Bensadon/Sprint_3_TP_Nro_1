@@ -1,1 +1,51 @@
-# Sprint_2_Trabajo_Practico_Nro_3
+### Módulo 3 - BackEnd con node.js
+
+# Sprint 2 - Trabajo Práctico Nro 3
+
+###
+
+### Resumen
+En este Trabajo Práctico, desarrollamos un servidor que se conecta a la colección "NodeMod3Cohorte5" en la base de datos MongoDB. 
+Usando el Modelo MVC (+ capa de servicios, repositorio, rutas, y configuracion del MongoDB) armamos el proyecto de forma que las diferentes actividades esten ordenadas y sean independientes, permitiendo mejorar su escalabilidad y mantenibilidad.
+
+### Flujo
+Mediante las rutas, el cliente accede a una peticion especifica o request consultando un recurso (método GET). Este request, vuelve al backend del servidor para gestionar el pedido y poder devolver una respuesta o response.
+El controlador es quien recibe la solicitud y extrae los parametros de la ruta. A continuacion, se comunica con la capa de Servicios que sirve como intermediario con la capa de Repositorio. Dentro de esta ultima capa, tenemos una interfaz (donde declamos los métodos a utilizar), y una implementacion (donde definimos la logica de dichos metodos). Para que el repositorio obtenga los datos, debe conectarse con la capa de Modelo, que mediante el esquema (schema) y el modelo (modelo) obtiene el lugar y el tipo de dato que necesita buscar en la base de datos. 
+Obtenido el o los dato/s, estos se devuelven al controlador quien utiliza funciones de la vista, que estructuran como va a ser visualizada la respuesta por el cliente o usuario. 
+
+
+### Estructura del Trabajo Práctico
+
+TP_3/
+└── Sprint_2_Trabajo_Practico_Nro_3/
+    ├── config/
+    │   └── dbConfig.mjs             # Configuración y conexión a la base de datos (Paso 1)
+    ├── controllers/
+    │   └── superHeroControllers.mjs  # Gestión de solicitudes HTTP y respuestas (Paso 5)
+    ├── models/
+    │   └── superHero.mjs            # Definición del esquema de Mongoose (Paso 2)
+    ├── node_modules/                # Dependencias instaladas (npm)
+    ├── repositories/
+    │   ├── IRepository.mjs          # Interfaz / Clase base para el repositorio
+    │   └── superHeroRepository.mjs  # Lógica de acceso a datos (Paso 3)
+    ├── routes/
+    │   └── superHeroRoutes.mjs      # Definición de endpoints y rutas API (Paso 7)
+    ├── services/
+    │   └── superheroesService.mjs   # Lógica de negocio e intermediario (Paso 4)
+    ├── views/
+    │   └── responseView.mjs         # Formateo de salida de datos para el cliente (Paso 6)
+    ├── .gitignore                   # Archivos y carpetas excluidos de Git
+    ├── package-lock.json            # Historial exacto de versiones de dependencias
+    ├── package.json                 # Configuración del proyecto y scripts
+    ├── README.md                    # Documentación general del proyecto
+    ├── server.mjs                   # Punto de entrada y arranque del servidor (Paso 9)
+    └── Sp2 Practico 3 A resolver v1.03.pdf  # Consigna del trabajo práctico
+
+
+
+###
+
+
+
+###### María Gabriela Centeno Bensadón
+###### Año 2026
