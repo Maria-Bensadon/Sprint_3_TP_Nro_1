@@ -50,9 +50,42 @@ class IRepository {
 
         throw new Error (`Método 'obtenerMayoresDe30()' no implementado`); 
     }
+
+
+// _________________________________________________________________________________________________________________________________
+//         SPRINT 3 - TRABAJO PRACTICO N°1
+// _________________________________________________________________________________________________________________________________
+ 
+    // quinto metodo --- POST
+    crearHeroe() {
+        throw new Error (`Método 'crearHeroe()' no implementado`); 
+    }
+
+    // sexto metodo --- PUT
+    actualizarHeroe() {
+
+        throw new Error (`Método 'actualizarHeroe()' no implementado`); 
+    }
+
+    // septimo metodo --- DELETE
+    eliminarHeroe() {
+
+        throw new Error (`Método 'eliminarHeroe()
+            ' no implementado`); 
+    }
+
+    // octavo método --- DELETE por nombre
+    eliminarHeroePorNombre() {
+        throw new Error (`Método 'eliminarHeroePorNombre()' no implementado`); 
+    }
+
 }
 
+
 export default IRepository; 
+
+
+
 
 
 
