@@ -54,7 +54,8 @@ class superHeroRepository extends IRepository {
 
     /**
        defino el metodo para obtener todos los supers y lo guardo 
-       en una constante. 
+       en una constante. MongoDB devuelve un array con todos los 
+       superheroes, por lo que ya se puede aplicar filter.
        El await va en el primer metodo, porque si no 
        obtengo todos los superheroes, no puedo filtrarlos.
 
@@ -66,6 +67,11 @@ class superHeroRepository extends IRepository {
   }
 
   // ------------------------------------------------------
+
+
+  // __________________________________________________________________________
+  //         SPRINT 3 - TRABAJO PRACTICO N°1
+  // __________________________________________________________________________
 
   // ---------------- Metodo POST --------------------------
 
@@ -101,9 +107,9 @@ class superHeroRepository extends IRepository {
   // metodo para eliminar un superheroe por nombre
   async eliminarHeroePorNombre(nombreSuperHeroe, valor) {
 
-    const nombreHeroe = {[nombreSuperHeroe]: valor};
-    const encontrado = superHero.find(nombreHeroe); 
-    return await superHero.deleteOne(encontrado); 
+    const nombre = { [nombreSuperHeroe]: valor };
+    const encontrado = superHero.find(nombre);
+    return await superHero.deleteOne(encontrado);
   }
 
   // ------------------------------------------------------

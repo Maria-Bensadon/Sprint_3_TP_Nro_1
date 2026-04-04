@@ -30,59 +30,58 @@ class IRepository {
          * se detecta un nuevo error y se interrumpe la ejecucion
          * del codigo 
         */
-        throw new Error (`Método 'obtenerPorId()' no implementado`); 
+        throw new Error(`Método 'obtenerPorId()' no implementado`);
     }
 
     // segundo metodo
     obtenerTodos() {
 
-        throw new Error (`Método 'obtenerTodos()' no implementado`); 
+        throw new Error(`Método 'obtenerTodos()' no implementado`);
     }
 
     // tercer metodo
     buscarPorAtributo() {
 
-        throw new Error (`Método 'buscarPorAtributo()' no implementado`); 
+        throw new Error(`Método 'buscarPorAtributo()' no implementado`);
     }
 
     // cuarto metodo
     obtenerMayoresDe30() {
 
-        throw new Error (`Método 'obtenerMayoresDe30()' no implementado`); 
+        throw new Error(`Método 'obtenerMayoresDe30()' no implementado`);
     }
 
 
-// _________________________________________________________________________________________________________________________________
-//         SPRINT 3 - TRABAJO PRACTICO N°1
-// _________________________________________________________________________________________________________________________________
- 
+    // __________________________________________________________________________
+    //         SPRINT 3 - TRABAJO PRACTICO N°1
+    // __________________________________________________________________________
+
     // quinto metodo --- POST
     crearHeroe() {
-        throw new Error (`Método 'crearHeroe()' no implementado`); 
+        throw new Error(`Método 'crearHeroe()' no implementado`);
     }
 
     // sexto metodo --- PUT
     actualizarHeroe() {
 
-        throw new Error (`Método 'actualizarHeroe()' no implementado`); 
+        throw new Error(`Método 'actualizarHeroe()' no implementado`);
     }
 
     // septimo metodo --- DELETE
     eliminarHeroe() {
 
-        throw new Error (`Método 'eliminarHeroe()
-            ' no implementado`); 
+        throw new Error(`Método 'eliminarHeroe()' no implementado`);
     }
 
     // octavo método --- DELETE por nombre
     eliminarHeroePorNombre() {
-        throw new Error (`Método 'eliminarHeroePorNombre()' no implementado`); 
+        throw new Error(`Método 'eliminarHeroePorNombre()' no implementado`);
     }
 
 }
 
 
-export default IRepository; 
+export default IRepository;
 
 
 
