@@ -16,28 +16,66 @@
 
 */
 
+import superHero from "../models/superHero.mjs";
 import superHeroRepository from "../repositories/SuperHeroRepository.mjs";
+
+// ---------------- Metodo GET --------------------------
 
 export async function obtenerSuperheroePorId(id) {
 
-    return await superHeroRepository.obtenerPorId(id); 
-    
+  return await superHeroRepository.obtenerPorId(id);
+
 }
 
 export async function obtenerTodosLosSuperheroes() {
 
-    return await superHeroRepository.obtenerTodos(); 
-    
+  return await superHeroRepository.obtenerTodos();
+
 }
 
 export async function buscarSuperheroePorAtributo(atributo, valor) {
 
-    return await superHeroRepository.buscarPorAtributo(atributo, valor); 
+  return await superHeroRepository.buscarPorAtributo(atributo, valor);
 }
 
 export async function obtenerSupeheroesMayoresDe30() {
 
-    return await superHeroRepository.obtenerMayoresDe30(); 
+  return await superHeroRepository.obtenerMayoresDe30();
 }
 
+// ------------------------------------------------------
 
+
+// __________________________________________________________________________
+//         SPRINT 3 - TRABAJO PRACTICO N°1
+// __________________________________________________________________________
+
+// ---------------- Metodo POST --------------------------
+export async function crearSuperheroe() {
+
+  return await superHero.crearSuperheroe();
+
+}
+
+// ---------------- Metodo PUT --------------------------
+export async function actualizarSuperheroe() {
+
+  return await superHero.actualizarHeroe(id);
+
+}
+
+// ---------------- Metodo DELETE -----------------------
+
+// metodo para eliminar un superheroe por id
+export async function eliminarSuperheroePorId() {
+
+  return await superHero.eliminarHeroe(id);
+
+}
+
+// metodo para eliminar un superheroe por nombre
+export async function eliminarSuperheroePorSuNombre() {
+
+  return await superHero.eliminarHeroePorNombre(nombreSuperHeroe, valor);
+
+}

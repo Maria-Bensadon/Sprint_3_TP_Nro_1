@@ -29,16 +29,23 @@
 
 */
 
-import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes, obtenerSupeheroesMayoresDe30, buscarSuperheroePorAtributo } from "../services/superheroesService.mjs";
+import {
+  obtenerSuperheroePorId, obtenerTodosLosSuperheroes, obtenerSupeheroesMayoresDe30,
+  buscarSuperheroePorAtributo, actualizarSuperheroe, crearSuperheroe,
+  eliminarSuperheroePorId, eliminarSuperheroePorSuNombre
+} from "../services/superheroesService.mjs";
 
 // la vista se realiza en el paso 6
-import {renderizarListaSuperheroes, renderizarSuperheroe} from "../views/responseView.mjs"
+import { renderizarListaSuperheroes, renderizarSuperheroe } from "../views/responseView.mjs"
 
+
+// --------------------- Metodo GET -------------------------------
 // 1) OBTENER SUPERHEROES POR ID
 export async function obtenerSuperheroePorIdController(req, res) {
 
   try {
 
+    // se extrae el id de los parametros
     const id = req.params.id;
     const superheroe = await obtenerSuperheroePorId(id);
 
@@ -89,6 +96,8 @@ export async function obtenerTodosLosSuperheroesController(req, res) {
 
     const superheroesFormateados = renderizarListaSuperheroes(superheroes);
     res.status(200).json(superheroesFormateados);
+
+    // no faltaria el error 404???
 
   }
 
@@ -162,6 +171,149 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res) {
   catch (error) {
 
     res.status(500).send({ mensaje: `Error al obtener superhéroes mayores de 30, controlador`, error: error.message });
+
+  }
+}
+
+// __________________________________________________________________________
+//         SPRINT 3 - TRABAJO PRACTICO N°1
+// __________________________________________________________________________
+
+// ---------------------- Metodo POST --------------------------------
+
+export async function crearSuperheroeController(req, res) {
+
+  try {
+    // se extrae el ID de los parametros
+    const datos = req.body;
+
+    // Se busca el superheroe
+    const superheroe = await crearSuperheroe(datos);
+
+    // 200 OK
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(superheroeFormateado);
+
+    // error 404
+    if (!superheroe) {
+
+      return res.status(404).send({ mensaje: `No se pudo crear el supehéroe` });
+
+    }
+  }
+
+  catch (error) {
+
+    // error 500
+    res.status(500).send({ mensaje: `Error al crear el superhéroe`, error: error.message });
+
+  }
+}
+
+// ----------------------- Metodo PUT ---------------------------------
+
+export async function actualizarSuperheroeController(req, res) {
+
+  try {
+    const id = req.params.id;
+
+    // const datos = req.body; 
+
+    const superheroe = await actualizarSuperheroe(id);
+
+    // 200 OK
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(superheroeFormateado);
+
+    // error 404 por no encontrar id
+    if (!id) {
+
+      return res.status(404).send({ mensaje: `No se el superheroe por Id para actualizar` });
+
+    }
+
+    // error 404 por no encontrar body?
+    if (!superheroe) {
+
+      return res.status(404).send({ mensaje: `No se pudo actualizar el superheroe` });
+
+    }
+
+
+  } catch (error) {
+
+    res.status(500).send({ mensaje: `Error al actualizar el superhéroe`, error: error.message });
+
+  }
+
+}
+
+
+// ---------------------- Metodo DELETE ---------------------------------
+
+// metodo para eliminar un superheroe por id
+export async function eliminarSuperheroePorIdController(req, res) {
+
+  try {
+
+    const id = req.params.id;
+    const superheroe = await eliminarSuperheroePorId(id);
+
+    // ---------------------------------------------------------------------------------
+
+    // 200 OK - devuelve el superheroe eliminado ---------------------------------------
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(`superheroe eliminado por id: ${superheroeFormateado}`);
+
+    // 200 OK - lista sin superheroe ---------------------------------------
+    const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
+    res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
+
+    // ---------------------------------------------------------------------------------
+
+    // 404
+    if (!superheroe) {
+
+      res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
+
+    }
+
+  } catch (error) {
+
+    // error 500
+    res.status(500).send({ mensaje: `Error al intentar eliminar superheroe`, error: error.message });
+
+  }
+
+}
+
+// metodo para eliminar un superheroe por nombre
+export async function eliminarSuperheroePorSuNombreController(req, res) {
+
+  try {
+
+    const { nombreSuperHeroe, valor } = req.params;
+
+    const superheroe = await eliminarSuperheroePorSuNombre(nombreSuperHeroe, valor);
+
+    // ---------------------------------------------------------------------------------
+
+    // 200 OK - lista sin superheroe ---------------------------------------
+    const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
+    res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
+
+    // 200 OK - superheroe eliminado ---------------------------------------
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(superheroeFormateado);
+
+    // ---------------------------------------------------------------------------------
+
+    // error 404
+    res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
+
+  } catch (error) {
+
+    res.status(500).send({ mensaje: `Error al interntar eliminar un superheroe por su nombre`, error: error.message });
 
   }
 }
