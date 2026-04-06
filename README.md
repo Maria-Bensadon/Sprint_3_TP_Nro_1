@@ -1,9 +1,9 @@
-### Diplomatura Universitaria en Desarrollo Web Full Stack con JavaScript
-### Módulo 3 - BackEnd con node.js
+##### Diplomatura Universitaria en Desarrollo Web Full Stack con JavaScript
+#### Módulo 3 - BackEnd con node.js
 
-###
+--- 
 
-# Sprint 2 - Trabajo Práctico Nro 3
+# Sprint 3 - Trabajo Práctico Nro 1
 
 ### Resumen
 En este Trabajo Práctico, ampliamos la funcionalidad del servidor mediante la adicion de los siguientes endpoints: 
@@ -13,8 +13,11 @@ En este Trabajo Práctico, ampliamos la funcionalidad del servidor mediante la a
     - DELETE => Aqui, el request sirve para borrar un superheroe por ID en la base de datos. La response, será el superheroe borrado
              => en este caso, se borrara un superheroe por NOMBRE, y la responde mostrara al mismo. 
 
-##### Desarrollamos un servidor que se conecta a la colección "NodeMod3Cohorte5" en la base de datos MongoDB. 
-##### Usando el Modelo MVC (+ capa de servicios, repositorio, rutas, y configuracion del MongoDB) armamos el proyecto de forma que las diferentes actividades esten ordenadas y sean independientes, permitiendo mejorar su escalabilidad y mantenibilidad.
+<details> 
+Desarrollamos un servidor que se conecta a la colección "NodeMod3Cohorte5" en la base de datos MongoDB. 
+Usando el Modelo MVC (+ capa de servicios, repositorio, rutas, y configuracion del MongoDB) armamos el proyecto de forma que las diferentes actividades esten ordenadas y sean independientes, permitiendo mejorar su escalabilidad y mantenibilidad.
+</details>
+
 
 ### Flujo
 Mediante las rutas, el cliente accede a una peticion especifica o request consultando un recurso (método GET). Este request, vuelve al backend del servidor para gestionar el pedido y poder devolver una respuesta o response.
@@ -51,7 +54,7 @@ TP_3/
 
 
 
-###
+---
 
 
 
