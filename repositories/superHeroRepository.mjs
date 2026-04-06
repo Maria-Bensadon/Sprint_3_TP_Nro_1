@@ -75,9 +75,10 @@ class superHeroRepository extends IRepository {
 
   // ---------------- Metodo POST --------------------------
 
-  async crearHeroe(datosHeroes) {
+  async crearHeroe(datos) {
 
-    return await superHero.create(datosHeroe);
+    //console.log(`se crea un superheroe`); 
+    return await superHero.create(datos);
 
   }
 
@@ -87,6 +88,7 @@ class superHeroRepository extends IRepository {
 
   async actualizarHeroe(id, datosActualizados) {
 
+    //console.log(`Se actualiza a:`, id); 
     return await superHero.findByIdAndUpdate(id, datosActualizados);
 
   }
@@ -97,6 +99,7 @@ class superHeroRepository extends IRepository {
 
   // metodo para eliminar un superheroe por id
   async eliminarHeroe(id) {
+    //console.log(`Se elimina a:`, id); 
     return await superHero.findByIdAndDelete(id);
   }
 
@@ -104,10 +107,9 @@ class superHeroRepository extends IRepository {
   // metodo para eliminar un superheroe por nombre
   async eliminarHeroePorNombre(valor) {
 
-    return await superHero.deleteOne({ nombreSuperHeroe: valor });
+    //console.log(`Se elimina a:`, valor); 
+    return await superHero.findOneAndDelete({ nombreSuperHeroe: valor });
   }
-
-  // ------------------------------------------------------
 
 
 }

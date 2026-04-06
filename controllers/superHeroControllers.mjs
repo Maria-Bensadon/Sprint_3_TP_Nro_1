@@ -217,7 +217,7 @@ export async function actualizarSuperheroeController(req, res) {
 
   try {
     const id = req.params.id;
-    const datosActualizados = req.body; 
+    const datosActualizados = req.body;
 
     // const datos = req.body; 
 
@@ -231,7 +231,7 @@ export async function actualizarSuperheroeController(req, res) {
     }
 
     // error 404 por no encontrar body?
-    if (!superheroe) {
+    if (!datosActualizados) {
 
       return res.status(404).send({ mensaje: `No se pudo actualizar el superheroe` });
 
@@ -268,15 +268,9 @@ export async function eliminarSuperheroePorIdController(req, res) {
     }
     // ---------------------------------------------------------------------------------
 
-    // // 200 OK - devuelve el superheroe eliminado ---------------------------------------
-    // const superheroeFormateado = renderizarSuperheroe(superheroe);
-    // res.status(200).json(`superheroe eliminado por id: ${superheroeFormateado}`);
-
     //200 OK - lista sin superheroe ---------------------------------------
-    const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
-    res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
-
-    // ---------------------------------------------------------------------------------
+    //const superheroeFormateado = renderizarSuperheroe(superheroe)
+    res.status(200).send({ mensaje: `Superhéroe por Id: eliminado` });
 
 
   } catch (error) {
@@ -293,24 +287,22 @@ export async function eliminarSuperheroePorSuNombreController(req, res) {
 
   try {
 
-    const { nombreSuperHeroe, valor } = req.params;
+    const { valor } = req.params;
 
-    const superheroe = await eliminarSuperheroePorSuNombre(nombreSuperHeroe, valor);
+    const superheroe = await eliminarSuperheroePorSuNombre(valor);
+
+    if (!superheroe) {
+
+      // error 404
+      return res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
+
+    }
+    // ---------------------------------------------------------------------------------
+
+    res.status(200).send({ mensaje: `Superhéroe por Nombre: eliminado` });
 
     // ---------------------------------------------------------------------------------
 
-    // 200 OK - lista sin superheroe ---------------------------------------
-    const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
-    res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
-
-    // 200 OK - superheroe eliminado ---------------------------------------
-    const superheroeFormateado = renderizarSuperheroe(superheroe);
-    res.status(200).json(superheroeFormateado);
-
-    // ---------------------------------------------------------------------------------
-
-    // error 404
-    res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
 
   } catch (error) {
 
@@ -318,5 +310,21 @@ export async function eliminarSuperheroePorSuNombreController(req, res) {
 
   }
 }
+
+
+
+
+
+
+
+
+
+// 200 OK - lista sin superheroe ---------------------------------------
+    // const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
+    // res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
+
+    // 200 OK - superheroe eliminado ---------------------------------------
+    // const superheroeFormateado = renderizarSuperheroe(superheroe);
+    // res.status(200).json(superheroeFormateado);
 
 

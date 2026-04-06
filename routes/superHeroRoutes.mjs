@@ -26,13 +26,13 @@ const router = express.Router();
 // http://localhost:3000/api/heroes
 router.get('/heroes', obtenerTodosLosSuperheroesController);
 
-// http://localhost:3000/api/heroes/mayores-30
+// // http://localhost:3000/api/heroes/mayores-30
 router.get('/heroes/mayores-30', obtenerSuperheroesMayoresDe30Controller);
 
-// http://localhost:3000/api/heroes/:id
+// // http://localhost:3000/api/heroes/:id
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 
-// http://localhost:3000/api/heroes/buscar/:atributo/:valor
+// // http://localhost:3000/api/heroes/buscar/:atributo/:valor
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
 
 
@@ -56,22 +56,40 @@ router.put('/heroes/:id', actualizarSuperheroeController);
 /** 
  * Endpoints DELETE
 */
+
+// http://localhost:3000/api/heroes/nombre/:valor
+router.delete('/heroes/nombre/:valor', eliminarSuperheroePorSuNombreController);
+// no es '/heroes/buscar/nombre/:valor' se superpondria con la ruta get de buscarPorAtributo
+// 
+
+
 // por id
 // http://localhost:3000/api/heroes/:id
 router.delete('/heroes/:id', eliminarSuperheroePorIdController);
 
-// por nombre
-// http://localhost:3000/api/heroes/nombre/:valor
-router.delete('/heroes/buscar/nombre/:valor', eliminarSuperheroePorSuNombreController);
+
 
 
 export default router;
 
 
 /*
+[
+  {
+        "nombreSuperHeroe": "Spiderman",
+        "nombreReal": "Peter Parker",
+        "nombreSociedad": "Vigilante",
+        "edad": 25,
+        "planetaOrigen": "Tierra",
+        "debilidad": "Radioactiva",
+        "poder": ["Trepar paredes", "Sentido arácnido", "Super fuerza", "Agilidad"],
+        "habilidadespecial": "Redes de telaraña",
+        "aliado": ["Ironman"],
+        "enemigo": ["Duende Verde"]
+    },
 
     {
-    "nombreSuperHeroe": "Bruja Escarlata",
+    "nombreSuperHeroe": "Bruja-Escarlata",
     "nombreReal": "Wanda Maximoff",
     "edad": 36,
     "planetaOrigen": "Tierra",
@@ -80,10 +98,10 @@ export default router;
     "aliados": ["Vision", "Quicksilver", "Vengadores"],
     "enemigos": ["Ultrón", "Thanos", "Agatha Harkness"],
     "creador": "Stan Lee"
-  }
+  },
 
   {
-    "nombreSuperHeroe: "Moon Knight",
+    "nombreSuperHeroe: "Moon-Knight",
     "nombreReal: "Marc Spector",
     "edad: 40,
     "planetaOrigen: "Tierra",
@@ -93,7 +111,7 @@ export default router;
     "enemigos: ["Black Spectre", "Arthur Harrow"],
     "creador: "Don Perlin"
 
-  }
+  },
   
   {
     "nombreSuperHeroe": "Daredevil",
@@ -107,5 +125,6 @@ export default router;
     "creador": "Stan Lee"
 
   }
+]
   
 */

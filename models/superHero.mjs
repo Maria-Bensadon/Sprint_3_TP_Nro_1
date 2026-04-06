@@ -31,7 +31,7 @@ const superHeroSchema = new mongoose.Schema(
     
     // sin corchetes = 1 solo valor
     debilidad: String,
-
+    
     // con corchetes = 2+ valores
     poderes: [String],
     aliados: [String],
