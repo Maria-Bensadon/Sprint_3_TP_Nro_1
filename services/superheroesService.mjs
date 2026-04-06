@@ -51,31 +51,31 @@ export async function obtenerSupeheroesMayoresDe30() {
 // __________________________________________________________________________
 
 // ---------------- Metodo POST --------------------------
-export async function crearSuperheroe() {
+export async function crearSuperheroe(datos) {
 
-  return await superHero.crearSuperheroe();
+  return await superHeroRepository.crearHeroe(datos);
 
 }
 
 // ---------------- Metodo PUT --------------------------
-export async function actualizarSuperheroe() {
+export async function actualizarSuperheroe(id, datosActualizados) {
 
-  return await superHero.actualizarHeroe(id);
+  return await superHeroRepository.actualizarHeroe(id, datosActualizados);
 
 }
 
 // ---------------- Metodo DELETE -----------------------
 
 // metodo para eliminar un superheroe por id
-export async function eliminarSuperheroePorId() {
+export async function eliminarSuperheroePorId(id) {
 
-  return await superHero.eliminarHeroe(id);
+  return await superHeroRepository.eliminarHeroe(id);
 
 }
 
 // metodo para eliminar un superheroe por nombre
-export async function eliminarSuperheroePorSuNombre() {
+export async function eliminarSuperheroePorSuNombre(nombreSuperHeroe, valor) {
 
-  return await superHero.eliminarHeroePorNombre(nombreSuperHeroe, valor);
+  return await superHeroRepository.eliminarHeroePorNombre(nombreSuperHeroe, valor);
 
 }

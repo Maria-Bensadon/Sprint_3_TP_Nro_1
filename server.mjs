@@ -1,7 +1,7 @@
 // archivo principal de la aplicacion
 
 /** 
- * Paso 9 = Configuración del Servidor
+ * Paso 8 = Configuración del Servidor
    __________________________________________________________________
  
  * Centraliza la conexion a MongoDB y a las rutas necesarias

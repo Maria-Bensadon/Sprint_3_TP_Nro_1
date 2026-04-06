@@ -75,9 +75,8 @@ class superHeroRepository extends IRepository {
 
   // ---------------- Metodo POST --------------------------
 
-  async crearHeroe() {
+  async crearHeroe(datosHeroes) {
 
-    const datosHeroe = req.body;
     return await superHero.create(datosHeroe);
 
   }
@@ -86,11 +85,9 @@ class superHeroRepository extends IRepository {
 
   // ---------------- Metodo PUT --------------------------
 
-  async actualizarHeroe(id) {
+  async actualizarHeroe(id, datosActualizados) {
 
-    const datosActualizados = req.body;
-
-    return await superHero.findByIdAndUpdate(datosActualizados);
+    return await superHero.findByIdAndUpdate(id, datosActualizados);
 
   }
 
@@ -105,11 +102,9 @@ class superHeroRepository extends IRepository {
 
 
   // metodo para eliminar un superheroe por nombre
-  async eliminarHeroePorNombre(nombreSuperHeroe, valor) {
+  async eliminarHeroePorNombre(valor) {
 
-    const nombre = { [nombreSuperHeroe]: valor };
-    const encontrado = superHero.find(nombre);
-    return await superHero.deleteOne(encontrado);
+    return await superHero.deleteOne({ nombreSuperHeroe: valor });
   }
 
   // ------------------------------------------------------

@@ -181,18 +181,14 @@ export async function obtenerSuperheroesMayoresDe30Controller(req, res) {
 
 // ---------------------- Metodo POST --------------------------------
 
+// 5) METODO PARA CREAR UN SUPERHEROE
 export async function crearSuperheroeController(req, res) {
 
   try {
-    // se extrae el ID de los parametros
     const datos = req.body;
 
     // Se busca el superheroe
     const superheroe = await crearSuperheroe(datos);
-
-    // 200 OK
-    const superheroeFormateado = renderizarSuperheroe(superheroe);
-    res.status(200).json(superheroeFormateado);
 
     // error 404
     if (!superheroe) {
@@ -200,6 +196,10 @@ export async function crearSuperheroeController(req, res) {
       return res.status(404).send({ mensaje: `No se pudo crear el supehéroe` });
 
     }
+
+    // 200 OK
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(superheroeFormateado);
   }
 
   catch (error) {
@@ -212,18 +212,16 @@ export async function crearSuperheroeController(req, res) {
 
 // ----------------------- Metodo PUT ---------------------------------
 
+// 6) METODO PARA ACTUALIZAR UN SUPERHEROE
 export async function actualizarSuperheroeController(req, res) {
 
   try {
     const id = req.params.id;
+    const datosActualizados = req.body; 
 
     // const datos = req.body; 
 
-    const superheroe = await actualizarSuperheroe(id);
-
-    // 200 OK
-    const superheroeFormateado = renderizarSuperheroe(superheroe);
-    res.status(200).json(superheroeFormateado);
+    const superheroe = await actualizarSuperheroe(id, datosActualizados);
 
     // error 404 por no encontrar id
     if (!id) {
@@ -239,6 +237,9 @@ export async function actualizarSuperheroeController(req, res) {
 
     }
 
+    // 200 OK
+    const superheroeFormateado = renderizarSuperheroe(superheroe);
+    res.status(200).json(superheroeFormateado);
 
   } catch (error) {
 
@@ -251,7 +252,7 @@ export async function actualizarSuperheroeController(req, res) {
 
 // ---------------------- Metodo DELETE ---------------------------------
 
-// metodo para eliminar un superheroe por id
+// 7) METODO PARA ELIMINAR UN SUPERHEROE POR ID
 export async function eliminarSuperheroePorIdController(req, res) {
 
   try {
@@ -259,24 +260,24 @@ export async function eliminarSuperheroePorIdController(req, res) {
     const id = req.params.id;
     const superheroe = await eliminarSuperheroePorId(id);
 
+    // 404
+    if (!superheroe) {
+
+      return res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
+
+    }
     // ---------------------------------------------------------------------------------
 
-    // 200 OK - devuelve el superheroe eliminado ---------------------------------------
-    const superheroeFormateado = renderizarSuperheroe(superheroe);
-    res.status(200).json(`superheroe eliminado por id: ${superheroeFormateado}`);
+    // // 200 OK - devuelve el superheroe eliminado ---------------------------------------
+    // const superheroeFormateado = renderizarSuperheroe(superheroe);
+    // res.status(200).json(`superheroe eliminado por id: ${superheroeFormateado}`);
 
-    // 200 OK - lista sin superheroe ---------------------------------------
+    //200 OK - lista sin superheroe ---------------------------------------
     const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
     res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
 
     // ---------------------------------------------------------------------------------
 
-    // 404
-    if (!superheroe) {
-
-      res.status(404).send({ mensaje: `No se pudo eliminar el superheroe` });
-
-    }
 
   } catch (error) {
 
@@ -287,7 +288,7 @@ export async function eliminarSuperheroePorIdController(req, res) {
 
 }
 
-// metodo para eliminar un superheroe por nombre
+// 8) METODO PARA ELIMINAR UN SUPERHEROE POR SU NOMBRE
 export async function eliminarSuperheroePorSuNombreController(req, res) {
 
   try {
