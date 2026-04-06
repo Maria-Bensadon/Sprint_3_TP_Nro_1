@@ -269,8 +269,8 @@ export async function eliminarSuperheroePorIdController(req, res) {
     // ---------------------------------------------------------------------------------
 
     //200 OK - lista sin superheroe ---------------------------------------
-    //const superheroeFormateado = renderizarSuperheroe(superheroe)
-    res.status(200).send({ mensaje: `Superhéroe por Id: eliminado` });
+    const superheroeFormateado = renderizarSuperheroe(superheroe)
+    res.status(200).json(superheroeFormateado);
 
 
   } catch (error) {
@@ -299,7 +299,9 @@ export async function eliminarSuperheroePorSuNombreController(req, res) {
     }
     // ---------------------------------------------------------------------------------
 
-    res.status(200).send({ mensaje: `Superhéroe por Nombre: eliminado` });
+    //200 OK - lista sin superheroe ---------------------------------------
+    const superheroeFormateado = renderizarSuperheroe(superheroe)
+    res.status(200).json(superheroeFormateado);
 
     // ---------------------------------------------------------------------------------
 
@@ -320,11 +322,11 @@ export async function eliminarSuperheroePorSuNombreController(req, res) {
 
 
 // 200 OK - lista sin superheroe ---------------------------------------
-    // const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
-    // res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
+// const listaSuperheroeFormateado = renderizarListaSuperheroes(superheroe)
+// res.status(200).json(listaSuperheroeFormateado); // devuelve todos los superheroes sin el eliminado
 
-    // 200 OK - superheroe eliminado ---------------------------------------
-    // const superheroeFormateado = renderizarSuperheroe(superheroe);
-    // res.status(200).json(superheroeFormateado);
+// 200 OK - superheroe eliminado ---------------------------------------
+// const superheroeFormateado = renderizarSuperheroe(superheroe);
+// res.status(200).json(superheroeFormateado);
 
 
