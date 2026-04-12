@@ -8,9 +8,12 @@
 ### Resumen
 En este Trabajo Práctico, ampliamos la funcionalidad del servidor mediante la adicion de los siguientes endpoints: 
 
-    - POST => esta ruta permite crear e insertar un nuevo superheroe en la base de datos, y devolver el superheroe creado
-    - PUT => este tipo de peticion sirve para actualizar un superheroe en la base de datos, y devolver el superheroe modificado.
-    - DELETE => Aqui, el request sirve para borrar un superheroe por ID en la base de datos. La response, será el superheroe borrado
+    - POST => esta ruta permite crear e insertar un nuevo superheroe en la base de datos, y 
+    devolver el superheroe creado
+    - PUT => este tipo de peticion sirve para actualizar un superheroe en la base de datos, 
+    y devolver el superheroe modificado.
+    - DELETE => Aqui, el request sirve para borrar un superheroe por ID en la base de datos. 
+    La response, será el superheroe borrado
              => en este caso, se borrara un superheroe por NOMBRE, y la responde mostrara al mismo. 
 
 <details> 
