@@ -3,15 +3,22 @@
 
 --- 
 
-# Sprint 3 - Trabajo Práctico Nro 1
+# Sprint 3 - Trabajo Práctico Nro 2: Validaciones
 
 ### Resumen
+
+
+<details>
 En este Trabajo Práctico, ampliamos la funcionalidad del servidor mediante la adicion de los siguientes endpoints: 
 
-    - POST => esta ruta permite crear e insertar un nuevo superheroe en la base de datos, y devolver el superheroe creado
-    - PUT => este tipo de peticion sirve para actualizar un superheroe en la base de datos, y devolver el superheroe modificado.
-    - DELETE => Aqui, el request sirve para borrar un superheroe por ID en la base de datos. La response, será el superheroe borrado
-             => en este caso, se borrara un superheroe por NOMBRE, y la responde mostrara al mismo. 
+    - POST => esta ruta permite crear e insertar un nuevo superheroe en 
+    la base de datos, y devolver el superheroe creado
+    - PUT => este tipo de peticion sirve para actualizar un superheroe en 
+    la base de datos, y devolver el superheroe modificado.
+    - DELETE => aqui, el request sirve para borrar un superheroe por ID en 
+    la base de datos. La response, será el superheroe borrado
+             => en este caso, se borrara un superheroe por NOMBRE, y la responde mostrara al mismo.
+</details>
 
 <details> 
 Desarrollamos un servidor que se conecta a la colección "NodeMod3Cohorte5" en la base de datos MongoDB. 
