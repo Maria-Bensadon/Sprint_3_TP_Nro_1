@@ -18,6 +18,16 @@ Desarrollamos un servidor que se conecta a la colección "NodeMod3Cohorte5" en l
 Usando el Modelo MVC (+ capa de servicios, repositorio, rutas, y configuracion del MongoDB) armamos el proyecto de forma que las diferentes actividades esten ordenadas y sean independientes, permitiendo mejorar su escalabilidad y mantenibilidad.
 </details>
 
+### Requerimientos
+1. Levantar un servidor Express en el puerto 3005.
+2. El servidor debe escuchar varias rutas GET:
+    - /superheroes/id/:id: Recibe un ID de superhéroe y devuelve los datos de ese 
+    superhéroe o un mensaje si no fue encontrado.
+    - /superheroes/atributo/:atributo/:valor: Recibe un atributo (por ejemplo, 
+    nombre o poder) y devuelve una lista de superhéroes que cumplen con ese criterio.
+    - /superheroes/edad/mayorA30: Devuelve una lista de superhéroes mayores de 30 años
+    que además sean del planeta Tierra y tengan al menos 2 poderes.
+
 
 ### Flujo
 Mediante las rutas, el cliente accede a una peticion especifica o request consultando un recurso (método GET). Este request, vuelve al backend del servidor para gestionar el pedido y poder devolver una respuesta o response.
@@ -54,7 +64,6 @@ TP_3/
 
 
 
----
 
 
 
